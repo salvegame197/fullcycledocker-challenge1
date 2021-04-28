@@ -11,5 +11,3 @@ FROM scratch
 COPY --from=Builder /bin/project /project
 
 ENTRYPOINT ["/project"]
-
-CMD ["--help"]
