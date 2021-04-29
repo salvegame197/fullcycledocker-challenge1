@@ -4,10 +4,10 @@ WORKDIR /src/app
 
 COPY hello.go .
 
-RUN go build -o /bin/project
+RUN GOOS=linux;go build -ldflags "-w"  hello.go
 
 FROM scratch
 
-COPY --from=Builder /bin/project /project
+COPY --from=Builder /src/app/hello /project
 
 ENTRYPOINT ["/project"]
